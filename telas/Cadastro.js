@@ -3,6 +3,7 @@ import { useState, useContext } from 'react';
 import { UtilsContext } from "./config/context"
 
 const styles = StyleSheet.create({
+    // General view
     viewClass: 
     {
         display: "flex",
@@ -10,6 +11,8 @@ const styles = StyleSheet.create({
         backgroundColor: "#003566",
         height: "100%"
     },
+
+    // Tittle of the project
     nomeCond: {
         backgroundColor: "#FFD60A",
         height: 50,
@@ -21,6 +24,18 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: "center"
     },
+
+    // Tittle of the screen
+    nomeTela: {
+        marginLeft: 40,
+        marginRight: 40,
+        backgroundColor: "#FFD60A",
+        height: 50,
+        display: "flex",
+        justifyContent: "center",
+    },
+
+    // General css of inputs and their tittles 
     labelText: 
     {
         paddingLeft: "20%",
@@ -35,6 +50,17 @@ const styles = StyleSheet.create({
         marginBottom: "2%",
         borderRadius: 5
     },
+    inputRow: 
+    {
+        backgroundColor: "white",
+        height: 25,
+        marginLeft: "20%",
+        marginRight: "20%",
+        marginBottom: "2%",
+        borderRadius: 5
+    },
+
+
     viewForm: 
     {
         display: "flex",
@@ -45,6 +71,8 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "flex-end",
     },
+
+    // Css of the Switch
     viewSwitch:
     {
         paddingLeft: "14%",
@@ -57,6 +85,16 @@ const styles = StyleSheet.create({
         paddingLeft: "3%",
         color: "white"
     },
+
+    // Views to aline de inputs
+    viewRowUser: {
+        display: "inline",
+    },
+    viewRowApto: {
+        display: "inline",
+    },
+
+    // Buttons to register and cancel
     cadastroButton: {
         backgroundColor: "#FFD60A",
         height: 50,
@@ -129,79 +167,80 @@ export function Cadastro(props)
                 <Text style = {styles.titleText}>Villa Tavares</Text>
             </View>
 
+            <View style  = {styles.nomeTela}>
+                <Text style = {styles.titleText}>Cadastro de Usuários</Text>
+            </View>
+
             <View style = {styles.viewForm}>
-                <Text style = {styles.labelText}>Nome Completo:</Text>
                 <TextInput
                     style = {styles.input}
                     autoComplete = {nome}
                     value = {nome}
+                    placeholder = "Nome Completo:"
                     onChangeText = {e => setNome(e)}
                 />
 
-                <Text style = {styles.labelText}>Email:</Text>
                 <TextInput 
                     style = {styles.input}
                     autoComplete = {email}
                     value = {email}
+                    placeholder = "Email:"
                     onChangeText = {e => setEmail(e)}
                 />
 
-                <Text style = {styles.labelText}>CPF:</Text>
                 <TextInput
                     style = {styles.input}
                     autoComplete = {cpf}
                     value = {cpf}
+                    placeholder = "CPF"
                     onChangeText = {e => setCpf(e)}
                 />
 
+                <TextInput
+                    style = {styles.inputRow}
+                    autoComplete = {idade}
+                    value = {idade}
+                    placeholder = "Data de Nascimento:"
+                    onChangeText = {e => setIdade(e)}
+                />
 
-                <View style = {styles.viewRowUser}>
-                    <Text style = {styles.labelText}>Data de Nascimento:</Text>
-                    <TextInput
-                        style = {styles.input}
-                        autoComplete = {idade}
-                        value = {idade}
-                        onChangeText = {e => setIdade(e)}
-                    />
+                <TextInput
+                    style = {styles.inputRow}
+                    autoComplete = {sexo}
+                    value = {sexo}
+                    onChangeText = {e => setSexo(e)}
+                    placeholder = "Sexo:"
+                />
 
-                    <Text style = {styles.labelText}>Sexo:</Text>
-                    <TextInput
-                        style = {styles.input}
-                        autoComplete = {sexo}
-                        value = {sexo}
-                        onChangeText = {e => setSexo(e)}
-                    />
-                </View>
+                <TextInput
+                    style = {styles.inputRow}
+                    autoComplete = {apto}
+                    value = {apto}
+                    placeholder = "Número do Apartamento:"
+                    onChangeText = {e => setApto(e)}
+                />
 
-                <View style = {styles.viewRowApto}>
-                    <Text style = {styles.labelText}>Número do Apartamento:</Text>
-                    <TextInput
-                        style = {styles.input}
-                        autoComplete = {apto}
-                        value = {apto}
-                        onChangeText = {e => setApto(e)}
-                    />
+                <TextInput
+                    style = {styles.inputRow}
+                    autoComplete = {bloco}
+                    value = {bloco}
+                    onChangeText = {e => setBloco(e)}
+                    placeholder="Bloco:"
+                />
 
-                    <Text style = {styles.labelText}>Bloco:</Text>
-                    <TextInput
-                        style = {styles.input}
-                        autoComplete = {bloco}
-                        value = {bloco}
-                        onChangeText = {e => setBloco(e)}
-                    />
+                <TextInput
+                    style = {styles.inputRow}
+                    autoComplete = {vagas}
+                    value = {vagas}
+                    onChangeText = {e => setVagas(e)}
+                    placeholder="Quantidade de vagas:"   
+                />
 
-                    <Text style = {styles.labelText}>Quantidade de vagas:</Text>
-                    <TextInput
-                        style = {styles.input}
-                        autoComplete = {vagas}
-                        value = {vagas}
-                        onChangeText = {e => setVagas(e)}
-                    />
-                </View>
-
-
-                <Text style = {styles.labelText}>Senha:</Text>
-                <TextInput style = {styles.input} secureTextEntry = {true}/>
+                <TextInput 
+                    style = {styles.input} 
+                    secureTextEntry = {true}
+                    placeholder="Senha:"    
+                />
 
                 <Text style = {styles.labelText}>ADM</Text>
                 <View style = {styles.viewSwitch}>
@@ -217,14 +256,14 @@ export function Cadastro(props)
                 </View>
             </View>
 
-            {/* <View style = {styles.viewButton}>
+            <View style = {styles.viewButton}>
                 <TouchableOpacity style={styles.CadastroButton} onPress = {() => gotoUsers()}>
                     <Text style = {styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.cancelButton} onPress = {() => props.navigation.navigate("Login")}>
                     <Text style = {styles.buttonText}>Cancelar</Text>
                 </TouchableOpacity>
-            </View> */}
+            </View>
         </View>
     )
 }
