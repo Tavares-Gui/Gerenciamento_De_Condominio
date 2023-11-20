@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
         justifyContent: "center",
     },
     titleText: {
-        fontSize: 30,
+        fontSize: 20,
         fontWeight: 'bold',
         textAlign: "center"
     },
-
+    
     // Tittle of the screen
     nomeTela: {
         marginLeft: 40,
@@ -34,8 +34,13 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "center",
     },
-
+    
     // General css of inputs and their tittles 
+    viewForm: 
+    {
+        display: "flex",
+        justifyContent: "flex-start",
+    },
     labelText: 
     {
         paddingLeft: "20%",
@@ -60,18 +65,6 @@ const styles = StyleSheet.create({
         borderRadius: 5
     },
 
-
-    viewForm: 
-    {
-        display: "flex",
-        justifyContent: "flex-start",
-    },
-    viewButton: 
-    {
-        display: "flex",
-        justifyContent: "flex-end",
-    },
-
     // Css of the Switch
     viewSwitch:
     {
@@ -85,7 +78,7 @@ const styles = StyleSheet.create({
         paddingLeft: "3%",
         color: "white"
     },
-
+    
     // Views to aline de inputs
     viewRowUser: {
         display: "inline",
@@ -93,8 +86,13 @@ const styles = StyleSheet.create({
     viewRowApto: {
         display: "inline",
     },
-
+    
     // Buttons to register and cancel
+    viewButton: 
+    {
+        display: "flex",
+        justifyContent: "flex-end",
+    },
     cadastroButton: {
         backgroundColor: "#FFD60A",
         height: 50,
@@ -102,7 +100,6 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginHorizontal: "30%",
         borderRadius: 5,
-        marginBottom: 50
     },
     buttonText: {
         textAlign: "center",
@@ -257,10 +254,10 @@ export function Cadastro(props)
             </View>
 
             <View style = {styles.viewButton}>
-                <TouchableOpacity style={styles.CadastroButton} onPress = {() => gotoUsers()}>
+                <TouchableOpacity style={styles.cadastroButton} onPress = {() => gotoUsers()}>
                     <Text style = {styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.cancelButton} onPress = {() => props.navigation.navigate("Login")}>
+                <TouchableOpacity style={styles.cancelButton} onPress = {() => props.navigation.navigate("TelaPrincipalAdm")}>
                     <Text style = {styles.buttonText}>Cancelar</Text>
                 </TouchableOpacity>
             </View>
