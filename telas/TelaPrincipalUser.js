@@ -83,7 +83,7 @@ export default function TelaUser(props)
                     <Text style = {styles.buttonText}>Pagar Mensalidade</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.atividadesButton} onPress = {() => gotoUsers()}>
+                <TouchableOpacity style={styles.atividadesButton} onPress = {() => props.navigation.navigate("Reservas")}>
                     <Text style = {styles.buttonText}>Reservas</Text>
                 </TouchableOpacity>
 
@@ -91,7 +91,7 @@ export default function TelaUser(props)
                     <Text style = {styles.buttonText}>Votar</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.atividadesButton} onPress = {() => gotoUsers()}>
+                <TouchableOpacity style={styles.atividadesButton} onPress = {() => props.navigation.navigate("FazerComentario")}>
                     <Text style = {styles.buttonText}>Feedbacks e Denúncias</Text>
                 </TouchableOpacity>
             </View>

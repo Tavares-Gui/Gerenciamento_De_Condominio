@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "flex-end",
     },
-    loginButton: {
+    submitButton: {
         backgroundColor: "#FFD60A",
         height: 50,
         display: "flex",
@@ -85,7 +85,7 @@ export default function ComentarioUser(props)
             </View>
 
             <View style = {styles.viewButton}>
-                <TouchableOpacity style={styles.loginButton} onPress = {() => props.navigation.navigate("TelaPrincipalUser")}>
+                <TouchableOpacity style={styles.submitButton} onPress = {() => props.navigation.navigate("TelaPrincipalUser")}>
                     <Text style = {styles.buttonText}>Enviar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.cancelButton} onPress = {() => props.navigation.navigate("TelaPrincipalUser")}>
