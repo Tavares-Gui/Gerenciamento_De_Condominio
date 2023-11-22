@@ -8,8 +8,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document("company")
-public class CompanyModel {
+@Document("reservation")
+public class ReservationModel {
     @Id
     private String id;
     private String name;
@@ -18,15 +18,15 @@ public class CompanyModel {
     @DBRef
     private List<UserModel> listUser;
 
-    public CompanyModel(String id, String name) {
+    public ReservationModel(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    public CompanyModel(String name) {
+    public ReservationModel(String name) {
         this.name = name;
     }
 
-    public CompanyModel() {
+    public ReservationModel() {
     }
 }

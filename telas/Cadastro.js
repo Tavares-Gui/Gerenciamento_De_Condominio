@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Switch, Button } from "react-native";
-import { useState, useContext } from 'react';
+import DropDownPicker from 'react-native-dropdown-picker';
 import { UtilsContext } from "./config/context"
+import { useState, useContext } from 'react';
 
 const styles = StyleSheet.create({
     // General view
@@ -55,14 +56,15 @@ const styles = StyleSheet.create({
         marginBottom: "2%",
         borderRadius: 5
     },
-    inputRow: 
-    {
+    dropDown: {
         backgroundColor: "white",
         height: 25,
+        width: 225,
         marginLeft: "20%",
         marginRight: "20%",
         marginBottom: "2%",
-        borderRadius: 5
+        borderRadius: 5,
+        borderColor: "white"
     },
 
     // Css of the Switch
@@ -77,14 +79,6 @@ const styles = StyleSheet.create({
     {
         paddingLeft: "3%",
         color: "white"
-    },
-    
-    // Views to aline de inputs
-    viewRowUser: {
-        display: "inline",
-    },
-    viewRowApto: {
-        display: "inline",
     },
     
     // Buttons to register and cancel
@@ -117,9 +111,13 @@ export function Cadastro(props)
     const [cpf, setCpf] = useState("")
     const [apto, setApto] = useState("")
     const [bloco, setBloco] = useState("")
-    const [vagas, setVagas] = useState("")
+    const [vagas, setVagas] = useState(null)
     const [notificacao, setNotificacao] = useState(false)
     const {utils, setUtils} = useContext(UtilsContext)
+    const [open, setOpen] = useState(false);
+    const [items, setItems] = useState([
+        {label: 1, value: 1},
+    ]);
 
     const attUser = async() => {
         try {
@@ -194,7 +192,7 @@ export function Cadastro(props)
                 />
 
                 <TextInput
-                    style = {styles.inputRow}
+                    style = {styles.input}
                     autoComplete = {idade}
                     value = {idade}
                     placeholder = "Data de Nascimento:"
@@ -202,7 +200,7 @@ export function Cadastro(props)
                 />
 
                 <TextInput
-                    style = {styles.inputRow}
+                    style = {styles.input}
                     autoComplete = {sexo}
                     value = {sexo}
                     onChangeText = {e => setSexo(e)}
@@ -210,7 +208,7 @@ export function Cadastro(props)
                 />
 
                 <TextInput
-                    style = {styles.inputRow}
+                    style = {styles.input}
                     autoComplete = {apto}
                     value = {apto}
                     placeholder = "Número do Apartamento:"
@@ -218,19 +216,23 @@ export function Cadastro(props)
                 />
 
                 <TextInput
-                    style = {styles.inputRow}
+                    style = {styles.input}
                     autoComplete = {bloco}
                     value = {bloco}
                     onChangeText = {e => setBloco(e)}
                     placeholder="Bloco:"
                 />
 
-                <TextInput
-                    style = {styles.inputRow}
-                    autoComplete = {vagas}
-                    value = {vagas}
+                <DropDownPicker
+                    style = {styles.dropDown}
+                    open={open}
+                    value={vagas}
+                    items={items}
+                    setOpen={setOpen}
+                    setItems={setItems}
+                    setValue={setVagas}
+                    placeholder="Quantidade de vagas:"
                     onChangeText = {e => setVagas(e)}
-                    placeholder="Quantidade de vagas:"   
                 />
 
                 <TextInput 
