@@ -18,10 +18,10 @@ export default function App() {
 		<NavigationContainer>
 			<UtilsContext.Provider value = {{utils, setUtils}}>
 				<Stack.Navigator>
+					<Stack.Screen name = "TelaPrincipalUser" options = {{headerShown: false}} component = {TelaPrincipalUser} />
 					<Stack.Screen name = "Cadastro" options = {{headerShown: false}} component = {Cadastro} />
 					<Stack.Screen name = "TelaPrincipalAdm" options = {{headerShown: false}} component = {TelaPrincipalAdm} />
 					<Stack.Screen name = "Reservas" options = {{headerShown: false}} component = {Reservas} />
-					<Stack.Screen name = "TelaPrincipalUser" options = {{headerShown: false}} component = {TelaPrincipalUser} />
 					<Stack.Screen name = "FazerComentario" options = {{headerShown: false}} component = {FazerComentario} />
 					<Stack.Screen name = "LerComentario" options = {{headerShown: false}} component = {LerComentario} />
 					<Stack.Screen name = "Login" options = {{headerShown: false}} component = {Login} />
