@@ -1,7 +1,6 @@
 package com.tavares.java_api.controller;
 
 import java.util.List;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -19,28 +18,24 @@ import com.tavares.java_api.service.UserService;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-
+    
     @Autowired
     private UserService userService;
 
     @GetMapping("")
-    public List<UserModel> getAllUser() {
+    public List<UserModel> getAllUser()
+    {
         List<UserModel> listRes = userService.findAll();
         return listRes;
     }
 
     @GetMapping("/{name}")
-    public List<UserModel> getUserByName(@PathVariable String name) {
+    public List<UserModel> getUserByName(@PathVariable String name)
+    {
         List<UserModel> listRes = userService.findByName(name);
         return listRes;
     }
-
-    @GetMapping("/{age}/{name}")
-    public List<UserModel> getUserByAgeAndName(@PathVariable short age, @PathVariable String name) {
-        List<UserModel> listRes = userService.findByAgeAndName(age, name);
-        return listRes;
-    }
-
+    
     @PostMapping("")
     public void newUser(@RequestBody UserModel newUser) {
         userService.save(newUser);
@@ -48,7 +43,19 @@ public class UserController {
 
     @PutMapping("/{id}")
     public void putUser(@RequestBody UserModel newUser, @PathVariable String id) {
-        userService.save((String) id, (String) newUser.getName(), (short) newUser.getAge());
+        userService.save(
+            (String) id, 
+            (String) newUser.getName(), 
+            (String) newUser.getDataNasc(), 
+            (String) newUser.getSex(), 
+            (String) newUser.getCpf(), 
+            (String) newUser.getBloco(),
+            (String) newUser.getApto(),
+            (String) newUser.getEmail(),
+            (String) newUser.getPassword(),
+            (Boolean) newUser.getAdm(),
+            (short) newUser.getVaga()
+        );
     }
 
     @DeleteMapping("/{id}")

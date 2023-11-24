@@ -1,6 +1,6 @@
 package com.tavares.java_api.model;
 
-import java.util.List;
+import java.util.Date;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -8,23 +8,27 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.Data;
 
 @Data
-@Document("reservation")
+@Document("reserva")
 public class ReservationModel {
     @Id
     private String id;
-    private String name;
+    private Date diaReservado;
     @DBRef
     private UserModel idUser;
-    @DBRef
-    private List<UserModel> listUser;
 
-    public ReservationModel(String id, String name) {
+    public ReservationModel(String id, Date diaReservado, UserModel idUser) {
         this.id = id;
-        this.name = name;
+        this.diaReservado = diaReservado;
+        this.idUser = idUser;
     }
 
-    public ReservationModel(String name) {
-        this.name = name;
+    public ReservationModel(Date diaReservado, UserModel idUser) {
+        this.diaReservado = diaReservado;
+        this.idUser = idUser;
+    }
+
+    public ReservationModel(Date diaReservado) {
+        this.diaReservado = diaReservado;
     }
 
     public ReservationModel() {
