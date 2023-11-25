@@ -1,4 +1,4 @@
-package com.tavares.java_api.dto;
+package com.tavares.java_api.DTO;
 
 import com.tavares.java_api.model.ReservationModel;
 import com.tavares.java_api.model.UserModel;
@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class ReservationDTO {
+public class ReservationUserDTO {
     private UserModel user;
     private ReservationModel reserva;
 }

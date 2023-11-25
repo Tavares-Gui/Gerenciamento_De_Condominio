@@ -15,35 +15,35 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tavares.java_api.DTO.ReservationUserDTO;
 import com.tavares.java_api.model.ReservationModel;
 import com.tavares.java_api.model.UserModel;
-import com.tavares.java_api.service. ReservationService;
+import com.tavares.java_api.service.ReservaService;
 
 @RestController
-@RequestMapping("/reserva")
-public class  ReservationController {
+@RequestMapping("/reservation")
+public class ReservaController {
 
     @Autowired
-    private  ReservationService reservaService;
+    private ReservaService reservationService;
 
     @PostMapping("")
-    public void new Reservation(@RequestBody  ReservationtionUserDTO new ReservationUserDTO) {
-        UserModel newUserModel = new UserModel(new ReservationUserDTO.getUser().getId());
+    public void newReservation(@RequestBody ReservationUserDTO newReservationUserDTO) {
+        UserModel newUserModel = new UserModel(newReservationUserDTO.getUser().getId());
         Date data = new Date();
-         ReservationtionModel new Reservation = new  ReservationtionModel(data, newUserModel);
-        reservaService.save(new Reservation);
+        ReservationModel newReservation = new ReservationModel(data, newUserModel);
+        reservationService.save(newReservation);
     }
 
     @GetMapping("")
-    public List< ReservationtionModel> findAll ReservationtionModels() {
-        return reservaService.findAll();
+    public List<ReservationModel> findAllReservationModels() {
+        return reservationService.findAll();
     }
 
     @GetMapping("/user/{userId}")
-    public List< ReservationtionModel> findByUserID(@PathVariable String userId) {
-        return reservaService.findByUserID(userId);
+    public List<ReservationModel> findByUserID(@PathVariable String userId) {
+        return reservationService.findByUserID(userId);
     }
 
     @DeleteMapping("/{id}")
-    public void delete Reservation(@PathVariable String id) {
-        reservaService.delete(id);
+    public void deleteReserva(@PathVariable String id) {
+        reservationService.delete(id);
     }
 }
