@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tavares.java_api.DTO.ReservationUserDTO;
+import com.tavares.java_api.dto.ReservationUserDTO;
 import com.tavares.java_api.model.ReservationModel;
 import com.tavares.java_api.model.UserModel;
-import com.tavares.java_api.service.ReservaService;
+import com.tavares.java_api.service.ReservationService;
 
 @RestController
 @RequestMapping("/reservation")
-public class ReservaController {
+public class ReservationController {
 
     @Autowired
-    private ReservaService reservationService;
+    private ReservationService reservationService;
 
     @PostMapping("")
     public void newReservation(@RequestBody ReservationUserDTO newReservationUserDTO) {

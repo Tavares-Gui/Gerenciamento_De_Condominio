@@ -53,7 +53,7 @@ public class UserController {
         userService.save(
             (String) id, 
             (String) newUser.getName(), 
-            (String) newUser.getDataNasc(), 
+            (String) newUser.getBirthday(), 
             (String) newUser.getSex(), 
             (String) newUser.getCpf(), 
             (String) newUser.getBloco(),

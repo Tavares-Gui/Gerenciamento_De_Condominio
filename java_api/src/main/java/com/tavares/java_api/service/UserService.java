@@ -1,12 +1,12 @@
-package com.tavares.tavares.service;
+package com.tavares.java_api.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tavares.tavares.model.UserModel;
-import com.tavares.tavares.repository.UserRepository;
+import com.tavares.java_api.model.UserModel;
+import com.tavares.java_api.repository.UserRepository;
 
 @Service
 public class UserService {

@@ -11,24 +11,24 @@ import lombok.Data;
 @Document("reservation")
 public class ReservationModel {
     @Id
-    private String id;
-    private Date diaReservado;
     @DBRef
+    private String id;
+    private Date diaReserva;
     private UserModel idUser;
 
-    public ReservationModel(String id, Date diaReservado, UserModel idUser) {
+    public ReservationModel(String id, Date diaReserva, UserModel idUser) {
         this.id = id;
-        this.diaReservado = diaReservado;
+        this.diaReserva = diaReserva;
         this.idUser = idUser;
     }
 
-    public ReservationModel(Date diaReservado, UserModel idUser) {
-        this.diaReservado = diaReservado;
+    public ReservationModel(Date diaReserva, UserModel idUser) {
+        this.diaReserva = diaReserva;
         this.idUser = idUser;
     }
 
-    public ReservationModel(Date diaReservado) {
-        this.diaReservado = diaReservado;
+    public ReservationModel(Date diaReserva) {
+        this.diaReserva = diaReserva;
     }
 
     public ReservationModel() {

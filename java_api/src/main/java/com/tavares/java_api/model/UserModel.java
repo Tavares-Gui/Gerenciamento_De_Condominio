@@ -13,7 +13,7 @@ public class UserModel {
     @Id
     private String id;
     private String name;
-    private String dataNasc;
+    private String birthday;
     private String sex;
     private String cpf;
     private String bloco;
@@ -23,33 +23,33 @@ public class UserModel {
     private Boolean adm;
     private short vaga;
 
-    public UserModel(String name, String dataNasc, String sex, String cpf, String bloco, String apto, String email, String password, Boolean adm, short vaga)
+    public UserModel(String name, String email, String cpf, String birthday, String sex, String apto, String bloco, short vaga,String password,Boolean adm)
     {
         this.name = name;
-        this.dataNasc = dataNasc;
-        this.sex = sex;
-        this.cpf = cpf;
-        this.bloco = bloco;
-        this.apto = apto;
         this.email = email;
+        this.cpf = cpf;
+        this.birthday = birthday;
+        this.sex = sex;
+        this.apto = apto;
+        this.bloco = bloco;
+        this.vaga = vaga;
         this.password = password;
         this.adm = adm;
-        this.vaga = vaga;
     }
 
     public UserModel(UserModel user)
     {
         this.id = user.getId();
         this.name = user.getName();
-        this.dataNasc = user.getDataNasc();
-        this.sex = user.getSex();
-        this.cpf = user.getCpf();
-        this.bloco = user.getBloco();
-        this.apto = user.getApto();
         this.email = user.getEmail();
+        this.cpf = user.getCpf();
+        this.birthday = user.getBirthday();
+        this.sex = user.getSex();
+        this.apto = user.getApto();
+        this.bloco = user.getBloco();
+        this.vaga = user.getVaga();
         this.password = user.getPassword();
         this.adm = user.getAdm();
-        this.vaga = user.getVaga();
     }
 
     public UserModel(String id)
