@@ -1,5 +1,7 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { UtilsContext } from "./config/context";
 import { useState } from 'react';
+import axios from 'axios';
 
 const styles = StyleSheet.create({
     viewClass: {
@@ -57,6 +59,38 @@ export function Login(props)
 {
     const [cpf, setCPF] = useState("");
     const [senha, setSenha] = useState("");
+    const {utils, setUtils} = useContext(UtilsContext)
+
+    async function getResponse(cpf, senha)
+    {
+        if(cpf !== " " && senha !== " ")
+        {
+            await axios.get(`http://localhost:8080/user/${cpf}/${senha}`).then((response) => {
+                console.log("response: ", response)
+                var user = response.data;
+
+                if (user !== " " && user !== null)
+                    if (user.adm)
+                        props.navigation.navigate("TelaPrincipalAdm");
+                    else
+                        props.navigation.navigate("TelaPrincipalUser");
+                else
+                    alert("CPF ou senha foram inseridos incorretamente.");
+            
+                console.log(user)
+                sessionStorage.setItem("user", JSON.stringify(user));
+            });
+        }
+        else
+            alert("CPF ou senha foram inseridos incorretamente.");
+        
+    }
+
+    function verifyLogin()
+    {
+        getResponse(cpf, senha)
+        console.log("User: ", user)
+    }
 
     return(
         <View style = {styles.viewClass}>
