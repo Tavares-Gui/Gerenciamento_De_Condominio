@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { UtilsContext } from "./config/context";
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
 
 const styles = StyleSheet.create({
@@ -63,13 +63,13 @@ export function Login(props)
 
     async function getResponse(cpf, senha)
     {
-        if(cpf !== " " && senha !== " ")
+        if(cpf !== "" && senha !== "")
         {
             await axios.get(`http://localhost:8080/user/${cpf}/${senha}`).then((response) => {
                 console.log("response: ", response)
                 var user = response.data;
 
-                if (user !== " " && user !== null)
+                if (user !== "" && user !== null)
                     if (user.adm)
                         props.navigation.navigate("TelaPrincipalAdm");
                     else
@@ -86,10 +86,10 @@ export function Login(props)
         
     }
 
-    function verifyLogin()
+    function loginVerificado()
     {
         getResponse(cpf, senha)
-        console.log("User: ", user)
+        // console.log("User: ", user)
     }
 
     return(
@@ -118,7 +118,7 @@ export function Login(props)
             </View>
 
             <View style = {styles.viewButton}>
-                <TouchableOpacity style={styles.loginButton} onPress = {() => props.navigation.navigate("Usuarios")}>
+                <TouchableOpacity style={styles.loginButton} onPress = {() => loginVerificado()}>
                     <Text style = {styles.buttonText}>LOGIN</Text>
                 </TouchableOpacity>
             </View>

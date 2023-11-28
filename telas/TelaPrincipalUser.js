@@ -60,6 +60,7 @@ const styles = StyleSheet.create({
 export default function TelaUser(props)
 {
     const {utils, setUtils} = useContext(UtilsContext)
+    var session = JSON.parse(sessionStorage.getItem("user"));
 
     return(
         <View style = {styles.viewClass}>
