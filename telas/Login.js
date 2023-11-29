@@ -61,6 +61,21 @@ export function Login(props)
     const [senha, setSenha] = useState("");
     const {utils, setUtils} = useContext(UtilsContext)
 
+    if (sessionStorage.length > 0)
+    {
+        try{
+            var user = JSON.parse(sessionStorage.getItem("user"));
+            if (user.adm == true)
+                props.navigation.navigate("TelaPrincipalAdm");
+            else
+                props.navigation.navigate("TelaPrincipalUser");
+        }
+        catch(e)
+        {
+            console.log("Funcionou")
+        }
+    } 
+
     async function getResponse(cpf, senha)
     {
         if(cpf !== "" && senha !== "")
