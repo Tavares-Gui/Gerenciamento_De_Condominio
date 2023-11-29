@@ -2,6 +2,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, Switch, Button } f
 import DropDownPicker from 'react-native-dropdown-picker';
 import { UtilsContext } from "./config/context"
 import { useState, useContext } from 'react';
+import axios from 'axios';
 
 const styles = StyleSheet.create({
     // General view
@@ -111,49 +112,23 @@ export function Cadastro(props)
     const [cpf, setCpf] = useState("")
     const [apto, setApto] = useState("")
     const [bloco, setBloco] = useState("")
+    const [password, setPassword] = useState("")
     const [vagas, setVagas] = useState(null)
-    const [notificacao, setNotificacao] = useState(false)
+    const [adm, setAdm] = useState(false)
     const {utils, setUtils} = useContext(UtilsContext)
     const [open, setOpen] = useState(false);
     const [items, setItems] = useState([
         {label: 1, value: 1},
     ]);
-
-    const attUser = async() => {
+    
+    const cadastro = async(nome, idade, sexo, cpf, bloco, apto, email, password, adm, vaga) => {
         try {
-            const response = await axios("http://localhost:8080/user", formData, {
-                headers: {
-                    "Content-Type": "multipart/form-data",
-                },
-            });
+            const response = await axios.post("http://localhost:8080/user", {nome, cpf, idade, sexo, vagas, bloco, apto, email, password, adm})
+            console.log(response)
         }
         catch (error) {
             console.error(error);
         }
-    }
-
-    function gotoUsers()
-    {
-        if(utils.dados)
-        {
-            setUtils({...utils, dados: [...utils.dados, {
-                nome: nome,
-                idade: idade,
-                sexo: sexo,
-                notificacao: notificacao
-            }]})
-        }
-        else
-        {
-            setUtils({...utils, dados: [{
-                nome: nome,
-                idade: idade,
-                sexo: sexo,
-                notificacao: notificacao
-            }]}) 
-        }
-
-        props.navigation.navigate("Usuarios")
     }
 
     return(
@@ -175,22 +150,6 @@ export function Cadastro(props)
                     onChangeText = {e => setNome(e)}
                 />
 
-                <TextInput 
-                    style = {styles.input}
-                    autoComplete = {email}
-                    value = {email}
-                    placeholder = "Email:"
-                    onChangeText = {e => setEmail(e)}
-                />
-
-                <TextInput
-                    style = {styles.input}
-                    autoComplete = {cpf}
-                    value = {cpf}
-                    placeholder = "CPF"
-                    onChangeText = {e => setCpf(e)}
-                />
-
                 <TextInput
                     style = {styles.input}
                     autoComplete = {idade}
@@ -209,10 +168,10 @@ export function Cadastro(props)
 
                 <TextInput
                     style = {styles.input}
-                    autoComplete = {apto}
-                    value = {apto}
-                    placeholder = "Número do Apartamento:"
-                    onChangeText = {e => setApto(e)}
+                    autoComplete = {cpf}
+                    value = {cpf}
+                    placeholder = "CPF"
+                    onChangeText = {e => setCpf(e)}
                 />
 
                 <TextInput
@@ -222,6 +181,43 @@ export function Cadastro(props)
                     onChangeText = {e => setBloco(e)}
                     placeholder="Bloco:"
                 />
+
+                <TextInput
+                    style = {styles.input}
+                    autoComplete = {apto}
+                    value = {apto}
+                    placeholder = "Número do Apartamento:"
+                    onChangeText = {e => setApto(e)}
+                />
+
+                <TextInput 
+                    style = {styles.input}
+                    autoComplete = {email}
+                    value = {email}
+                    placeholder = "Email:"
+                    onChangeText = {e => setEmail(e)}
+                />
+
+                <TextInput 
+                    style = {styles.input}
+                    autoComplete = {password}
+                    value = {password}
+                    placeholder = "Senha:"
+                    onChangeText = {e => setPassword(e)}
+                />
+
+                <Text style = {styles.labelText}>ADM</Text>
+                <View style = {styles.viewSwitch}>
+                    <Switch
+                        onValueChange = {() => setAdm(!adm)}
+                        value = {adm}
+                        style = {{marginLeft: "7%"}}
+                        trackColor = {{false: "red", true: "green"}}
+                        thumbColor = {"white"}
+                        activeThumbColor = {"#f4f3f4"}
+                    />
+                    <Text style = {styles.labelTextSwitch}>{adm ? "Sim" : "Não"}</Text>
+                </View>
 
                 <DropDownPicker
                     style = {styles.dropDown}
@@ -234,29 +230,10 @@ export function Cadastro(props)
                     placeholder="Quantidade de vagas:"
                     onChangeText = {e => setVagas(e)}
                 />
-
-                <TextInput 
-                    style = {styles.input} 
-                    secureTextEntry = {true}
-                    placeholder="Senha:"    
-                />
-
-                <Text style = {styles.labelText}>ADM</Text>
-                <View style = {styles.viewSwitch}>
-                    <Switch
-                        onValueChange = {() => setNotificacao(!notificacao)}
-                        value = {notificacao}
-                        style = {{marginLeft: "7%"}}
-                        trackColor = {{false: "red", true: "green"}}
-                        thumbColor = {"white"}
-                        activeThumbColor = {"#f4f3f4"}
-                    />
-                    <Text style = {styles.labelTextSwitch}>{notificacao ? "Sim" : "Não"}</Text>
-                </View>
             </View>
 
             <View style = {styles.viewButton}>
-                <TouchableOpacity style={styles.cadastroButton} onPress = {() => gotoUsers()}>
+                <TouchableOpacity style={styles.cadastroButton} onPress = {() => cadastro(nome, cpf, idade, sexo, vagas, bloco, apto, email, password, adm)}>
                     <Text style = {styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.cancelButton} onPress = {() => props.navigation.navigate("TelaPrincipalAdm")}>
