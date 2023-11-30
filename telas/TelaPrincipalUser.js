@@ -64,10 +64,6 @@ export default function TelaUser(props)
 
     return(
         <View style = {styles.viewClass}>
-            <View style  = {styles.nomeCond}>
-                <Text style = {styles.titleText}>Villa Tavares</Text>
-            </View>
-
             <View style = {styles.viewImage}>
                 <Image
                     style={styles.minhaLogo}

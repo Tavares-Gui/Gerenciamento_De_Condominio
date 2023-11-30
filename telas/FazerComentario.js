@@ -62,7 +62,7 @@ export default function ComentarioUser(props)
     return(
         <View style = {styles.viewClass}>
             <View style  = {styles.nomeCond}>
-                <Text style = {styles.titleText}>Villa Tavares</Text>
+                <Text style = {styles.titleText}>Fazer Comentarios</Text>
             </View>
 
             <View style = {styles.viewForm}>

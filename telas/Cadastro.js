@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
     },
 
     // Tittle of the project
-    nomeCond: {
+    nameCond: {
         backgroundColor: "#FFD60A",
         height: 50,
         display: "flex",
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     },
     
     // Tittle of the screen
-    nomeTela: {
+    nameTela: {
         marginLeft: 40,
         marginRight: 40,
         backgroundColor: "#FFD60A",
@@ -105,25 +105,25 @@ const styles = StyleSheet.create({
 export function Cadastro(props)
 {
 
-    const [nome, setNome] = useState("")
-    const [idade, setIdade] = useState("")
-    const [sexo, setSexo] = useState("")
-    const [email, setEmail] = useState("")
+    const [name, setName] = useState("")
+    const [birthday, setBirthday] = useState("")
+    const [sex, setSex] = useState("")
     const [cpf, setCpf] = useState("")
-    const [apto, setApto] = useState("")
     const [bloco, setBloco] = useState("")
+    const [apto, setApto] = useState("")
+    const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [vagas, setVagas] = useState(null)
     const [adm, setAdm] = useState(false)
-    const {utils, setUtils} = useContext(UtilsContext)
+    const [vagas, setVagas] = useState(null)
     const [open, setOpen] = useState(false);
     const [items, setItems] = useState([
         {label: 1, value: 1},
     ]);
+    const {utils, setUtils} = useContext(UtilsContext)
     
-    const cadastro = async(nome, idade, sexo, cpf, bloco, apto, email, password, adm, vaga) => {
+    const cadastro = async(name, birthday, sex, cpf, bloco, apto, email, password, adm, vagas) => {
         try {
-            const response = await axios.post("http://localhost:8080/user", {nome, cpf, idade, sexo, vagas, bloco, apto, email, password, adm})
+            const response = await axios.post("http://localhost:8080/user", {name, birthday, sex, cpf, bloco, apto, email, password, adm, vagas})
             console.log(response)
         }
         catch (error) {
@@ -133,36 +133,32 @@ export function Cadastro(props)
 
     return(
         <View style = {styles.viewClass}>
-            <View style  = {styles.nomeCond}>
-                <Text style = {styles.titleText}>Villa Tavares</Text>
-            </View>
-
-            <View style  = {styles.nomeTela}>
+            <View style  = {styles.nameTela}>
                 <Text style = {styles.titleText}>Cadastro de Usuários</Text>
             </View>
 
             <View style = {styles.viewForm}>
                 <TextInput
                     style = {styles.input}
-                    autoComplete = {nome}
-                    value = {nome}
+                    autoComplete = {name}
+                    value = {name}
                     placeholder = "Nome Completo:"
-                    onChangeText = {e => setNome(e)}
+                    onChangeText = {e => setName(e)}
                 />
 
                 <TextInput
                     style = {styles.input}
-                    autoComplete = {idade}
-                    value = {idade}
+                    autoComplete = {birthday}
+                    value = {birthday}
                     placeholder = "Data de Nascimento:"
-                    onChangeText = {e => setIdade(e)}
+                    onChangeText = {e => setBirthday(e)}
                 />
 
                 <TextInput
                     style = {styles.input}
-                    autoComplete = {sexo}
-                    value = {sexo}
-                    onChangeText = {e => setSexo(e)}
+                    autoComplete = {sex}
+                    value = {sex}
+                    onChangeText = {e => setSex(e)}
                     placeholder = "Sexo:"
                 />
 
@@ -170,7 +166,7 @@ export function Cadastro(props)
                     style = {styles.input}
                     autoComplete = {cpf}
                     value = {cpf}
-                    placeholder = "CPF"
+                    placeholder = "CPF:"
                     onChangeText = {e => setCpf(e)}
                 />
 
@@ -233,7 +229,7 @@ export function Cadastro(props)
             </View>
 
             <View style = {styles.viewButton}>
-                <TouchableOpacity style={styles.cadastroButton} onPress = {() => cadastro(nome, cpf, idade, sexo, vagas, bloco, apto, email, password, adm)}>
+                <TouchableOpacity style={styles.cadastroButton} onPress = {() => cadastro(name, birthday, sex, cpf, bloco, apto, email, password, adm, vagas)}>
                     <Text style = {styles.buttonText}>Cadastrar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.cancelButton} onPress = {() => props.navigation.navigate("TelaPrincipalAdm")}>

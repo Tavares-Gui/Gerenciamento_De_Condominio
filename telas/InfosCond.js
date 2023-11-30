@@ -74,10 +74,6 @@ export default function InformacoesCond(props)
 
     return(
         <View style = {styles.viewClass}>
-            <View style  = {styles.nomeCond}>
-                <Text style = {styles.titleText}>Villa Tavares</Text>
-            </View>
-
             <View style  = {styles.nomeTela}>
                 <Text style = {styles.titleText}>Informações do Condomínio</Text>
             </View>

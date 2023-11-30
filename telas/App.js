@@ -31,20 +31,20 @@ export default function App() {
 					<Stack.Screen name="Login" options={{ headerShown: false }} component={Login} />
 
 					<Stack.Screen name="Cadastro" options={{
-						title: 'Cadastro', headerLeft: () => null, headerRight: () => (
+						title: 'Villa Tavares', headerLeft: () => null, headerRight: () => (
 							<TouchableOpacity
-								style={styles.touch1}
+								style={styles.btnSair}
 								onPress={() => logout()}
 							>
 								<Text>Sair</Text>
 							</TouchableOpacity>
 						)
-					}} component={Cadastro} />
+					}} component={Cadastro}/>
 
 					<Stack.Screen name="TelaPrincipalAdm" options={{
-						title: 'Síndico', headerLeft: () => null, headerRight: () => (
+						title: 'Villa Tavares', headerLeft: () => null, headerRight: () => (
 							<TouchableOpacity
-								style={styles.touch1}
+								style={styles.btnSair}
 								onPress={() => logout()}
 							>
 								<Text>Sair</Text>
@@ -53,9 +53,9 @@ export default function App() {
 					}} component={TelaPrincipalAdm} />
 
 					<Stack.Screen name="TelaPrincipalUser" options={{
-						title: 'Usuario', headerLeft: () => null, headerRight: () => (
+						title: 'Villa Tavares', headerLeft: () => null, headerRight: () => (
 							<TouchableOpacity
-								style={styles.touch1}
+								style={styles.btnSair}
 								onPress={() => logout()}
 							>
 								<Text>Sair</Text>
@@ -64,9 +64,9 @@ export default function App() {
 					}} component={TelaPrincipalUser} />
 
 					<Stack.Screen name="Reservas" options={{
-						title: 'Reservas', headerLeft: () => null, headerRight: () => (
+						title: 'Villa Tavares', headerLeft: () => null, headerRight: () => (
 							<TouchableOpacity
-								style={styles.touch1}
+								style={styles.btnSair}
 								onPress={() => logout()}
 							>
 								<Text>Sair</Text>
@@ -75,9 +75,9 @@ export default function App() {
 					}} component={Reservas} />
 
 					<Stack.Screen name="FazerComentario" options={{
-						title: 'Comentarios', headerLeft: () => null, headerRight: () => (
+						title: 'Villa Tavares', headerLeft: () => null, headerRight: () => (
 							<TouchableOpacity
-								style={styles.touch1}
+								style={styles.btnSair}
 								onPress={() => logout()}
 							>
 								<Text>Sair</Text>
@@ -86,9 +86,9 @@ export default function App() {
 					}} component={FazerComentario} />
 
 					<Stack.Screen name="LerComentario" options={{
-						title: 'Comentarios', headerLeft: () => null, headerRight: () => (
+						title: 'Villa Tavares', headerLeft: () => null, headerRight: () => (
 							<TouchableOpacity
-								style={styles.touch1}
+								style={styles.btnSair}
 								onPress={() => logout()}
 							>
 								<Text>Sair</Text>
@@ -97,9 +97,9 @@ export default function App() {
 					}} component={LerComentario} />
 
 					<Stack.Screen name="InfosCond" options={{
-						title: 'Informacoes', headerLeft: () => null, headerRight: () => (
+						title: 'Villa Tavares', headerLeft: () => null, headerRight: () => (
 							<TouchableOpacity
-								style={styles.touch1}
+								style={styles.btnSair}
 								onPress={() => logout()}
 							>
 								<Text>Sair</Text>
@@ -112,10 +112,10 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-	touch1: {
+	btnSair: {
 	  width: "75px",
 	  height: "35px",
-	  backgroundColor: "black",
+	  backgroundColor: "#FFD60A",
 	  padding: "5px",
 	  borderRadius: "10px",
 	  marginRight: "15px",

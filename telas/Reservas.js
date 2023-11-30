@@ -78,7 +78,9 @@ export default function RealizarRezerva(props)
 {
     const [date, setDate] = React.useState(undefined);
     const [open, setOpen] = React.useState(false);
-    const Dates = [new Date('2023-11-23')]
+    const Dates = [new Date()]
+
+
 
     Dates.forEach(date => {
         date.setDate(date.getDate() + 1)
@@ -98,10 +100,6 @@ export default function RealizarRezerva(props)
 
     return(
         <View style = {styles.viewClass}>
-            <View style  = {styles.nomeCond}>
-                <Text style = {styles.titleText}>Villa Tavares</Text>
-            </View>
-
             <View style = {styles.viewReserva}>
                 <SafeAreaProvider>
                     <View style={{ justifyContent: 'center', flex: 1, alignItems: 'center' }}>
